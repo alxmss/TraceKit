@@ -30,6 +30,54 @@ tracekit distill  ←  trace.json  ←  registry.drain()  ←  traceId
 
 ---
 
+## Is TraceKit right for your project?
+
+TraceKit is a precision instrument. It works best when you know *which* execution you want to understand, not just *where* a function is defined.
+
+### The sweet spot
+
+**Language: TypeScript / JavaScript (Node.js & modern web)**
+
+TraceKit's engine is built on the ECMAScript `Proxy` API and Node's `AsyncLocalStorage`, making it native to the JS/TS ecosystem. It wraps any object or function export without an OS-level agent.
+
+- Node.js backends — Express, Fastify, NestJS
+- Modern frontend build pipelines — React/Vite, Next.js (server-side)
+
+**Architecture: modular codebases with clear service boundaries**
+
+TraceKit thrives when logic is separated into services, controllers, or slices. You tell it "watch only the `auth` and `payment` slices" and it ignores the other 200 files in your project — so the output is 100% focused on the transaction flow you care about.
+
+Good fits: `/services`, `/controllers`, `/slices`, `/repositories`, or any Redux Toolkit-style layout.
+
+**Task type: interaction-heavy debugging with a clear start and end**
+
+TraceKit records a single execution boundary — everything between `tk.track()` start and finish.
+
+- **API request/response cycles** — trace every function from route entry to response
+- **Failing tests** — run a broken test inside `tk.track()`; the distilled output is exactly the code that ran
+- **State transitions** — pinpoint why a Redux action or database mutation didn't behave as expected
+
+**Project scale: the "context wall"**
+
+| Project size | Recommendation |
+|---|---|
+| < 5k LOC | TraceKit is overkill — an LLM can read the whole project |
+| 20k–200k+ LOC | TraceKit becomes a game-changer — a search returns 50 matches, TraceKit shows the 2 that actually ran |
+
+### TraceKit vs. standard RAG (vector search)
+
+| | Standard RAG | TraceKit |
+|---|---|---|
+| **Relevance** | Shows code that *looks* relevant | Shows code that *actually ran* |
+| **Async logic** | Struggles to follow callbacks | Follows perfectly via `AsyncLocalStorage` |
+| **Token usage** | Scalable but noisy | Ultra-minimal |
+| **Setup cost** | Requires a vector DB | Zero-config via `tracekit init` |
+| **Ambiguity** | High | Zero |
+
+If you're working in a large TypeScript codebase where "finding where the logic actually lives" is the hardest part of the job, TraceKit turns a *needle-in-a-haystack* problem into a *here is the needle* solution.
+
+---
+
 ## Installation
 
 ### In a project that already has TypeScript
