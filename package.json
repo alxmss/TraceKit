@@ -1,0 +1,34 @@
+{
+  "name": "tracekit",
+  "version": "0.1.0",
+  "description": "Runtime instrumentation and source pruning for TypeScript modules",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "tracekit": "./dist/cli.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "npm run build",
+    "trace:distill": "tracekit distill --trace trace.json --root ."
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.3",
+    "typescript": "^5.8.3",
+    "vitest": "^3.1.3",
+    "tracekit": "^0.1.0"
+  },
+  "dependencies": {
+    "commander": "^14.0.3",
+    "magic-string": "^0.30.21",
+    "ts-morph": "^28.0.0"
+  }
+}

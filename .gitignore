@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.tracekit/
+trace.json
+*.js.map
+*.d.ts.map
+
+# Local Claude Code tooling — not part of the project
+.claude/
+.rtk/
+CLAUDE.md
