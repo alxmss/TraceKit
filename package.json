@@ -1,5 +1,8 @@
 {
-  "name": "tracekit",
+  "name": "@alxmss/tracekit",
+  "publishConfig": {
+    "access": "public"
+  },
   "version": "0.1.0",
   "description": "Runtime instrumentation and source pruning for TypeScript modules",
   "type": "module",
@@ -9,7 +12,8 @@
     "tracekit": "./dist/cli.js"
   },
   "files": [
-    "dist"
+    "dist",
+    "!dist/__tests__"
   ],
   "scripts": {
     "build": "tsc",
@@ -23,8 +27,7 @@
   "devDependencies": {
     "@types/node": "^22.15.3",
     "typescript": "^5.8.3",
-    "vitest": "^3.1.3",
-    "tracekit": "^0.1.0"
+    "vitest": "^3.1.3"
   },
   "dependencies": {
     "commander": "^14.0.3",
