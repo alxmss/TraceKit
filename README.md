@@ -7,9 +7,9 @@ TraceKit wraps your modules in a transparent Proxy, records which functions are 
 > **Status: Operational** — 34/34 tests passing.  
 > Node.js 22+, TypeScript 5.x, ESM.
 
-[![Tests](https://img.shields.io/badge/tests-34%20passing-brightgreen)]()
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue)]()
-[![Node](https://img.shields.io/badge/Node.js-22%2B-green)]()
+[![Tests](https://img.shields.io/badge/tests-34%20passing-brightgreen)](https://github.com/alxmss/TraceKit)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue)](https://github.com/alxmss/TraceKit)
+[![Node](https://img.shields.io/badge/Node.js-22%2B-green)](https://github.com/alxmss/TraceKit)
 
 ---
 
@@ -35,7 +35,7 @@ tracekit distill  ←  trace.json  ←  registry.drain()  ←  traceId
 ### In a project that already has TypeScript
 
 ```bash
-npm install --save-dev tracekit
+npm install --save-dev @alxmss/tracekit
 ```
 
 Then initialise the config (this creates `tracekit.config.ts` and adds a helper script to `package.json`):
@@ -47,7 +47,7 @@ npx tracekit init
 ### From source (this repo)
 
 ```bash
-git clone <repo>
+git clone https://github.com/alxmss/TraceKit.git
 cd TraceKit
 npm install
 npm run build        # compiles src/ → dist/
@@ -71,7 +71,7 @@ Open `tracekit.config.ts` and map your slice names to their source files:
 
 ```ts
 // tracekit.config.ts
-import { defineConfig } from 'tracekit';
+import { defineConfig } from '@alxmss/tracekit';
 
 export default defineConfig({
   slices: {
@@ -86,7 +86,7 @@ export default defineConfig({
 ### 3. Instrument your code
 
 ```ts
-import { tk, registry, traceStorage } from 'tracekit';
+import { tk, registry, traceStorage } from '@alxmss/tracekit';
 import { writeFile } from 'node:fs/promises';
 import * as mathService from './src/mathService.js';
 

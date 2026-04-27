@@ -1,4 +1,4 @@
-import { defineConfig } from 'tracekit';
+import { defineConfig } from '@alxmss/tracekit';
 
 export default defineConfig({
   slices: {

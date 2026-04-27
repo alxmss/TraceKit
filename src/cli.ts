@@ -66,7 +66,7 @@ function formatMd(filePath: string, content: string): string {
 
 // ─── config template (written by `tracekit init`) ────────────────────────────
 
-const CONFIG_TEMPLATE = `import { defineConfig } from 'tracekit';
+const CONFIG_TEMPLATE = `import { defineConfig } from '@alxmss/tracekit';
 
 export default defineConfig({
   slices: {
@@ -127,8 +127,8 @@ program
 
       // Mock devDependency registration (real install is out-of-scope for init)
       const devDeps = (pkg["devDependencies"] ?? {}) as Record<string, string>;
-      if (!devDeps["tracekit"]) {
-        devDeps["tracekit"] = "^0.1.0";
+      if (!devDeps["@alxmss/tracekit"]) {
+        devDeps["@alxmss/tracekit"] = "^0.1.0";
         pkg["devDependencies"] = devDeps;
         changed = true;
       }
